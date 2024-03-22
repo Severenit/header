@@ -8,10 +8,11 @@ import {
   LogoutOutlined,
 } from "@ant-design/icons";
 import { ItemType, MenuItemType } from "antd/es/menu/hooks/useItems";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
-const Header = ({ navigate }: { navigate: any }) => {
-  const location = useLocation();
+const Header = () => {
+  const navigate = useNavigate();
+  const location = useLocation(); // для определения текущего пути
 
   const selectedKeys = useMemo<string[]>(
     () => (location?.pathname ? [location.pathname] : []),
@@ -21,7 +22,7 @@ const Header = ({ navigate }: { navigate: any }) => {
   const items: ItemType<MenuItemType>[] = useMemo(
     () => [
       {
-        label: "ONLINE-SHOP",
+        label: "ONLINE",
         key: "/main",
         icon: <ShoppingOutlined />,
       },
